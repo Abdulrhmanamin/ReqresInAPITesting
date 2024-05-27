@@ -25,6 +25,6 @@ public class ResourceServices {
         return RequestUtils.createRequestWithoutParamsOrBody()
                 .log().all()
                 .when()
-                .get(Configuration.getEndpoint("resourceEp")+"/"+resourceId);
+                .get(Configuration.getEndpoint("resourceEp")+resourceId);
     }
 }

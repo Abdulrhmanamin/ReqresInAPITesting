@@ -52,7 +52,7 @@ public class ResourcesTests {
         response
                 .then()
                 .log().all()
-                .assertThat().body("data[1].name",is(equalTo("fuchsia rose")));
+                .assertThat().body("data.name",is(equalTo("fuchsia rose")));
     }
     @Test(priority = 2)
     @Description("this test for checking of empty list when search by invalid id ")
@@ -62,7 +62,7 @@ public class ResourcesTests {
         response
                 .then()
                 .log().all()
-                .assertThat().statusCode(200).and()
-                .assertThat().body("isEmpty()", Matchers.is(false));
+                .assertThat().statusCode(404).and()
+                .assertThat().body("isEmpty()", Matchers.is(true));
     }
 }
