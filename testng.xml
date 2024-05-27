@@ -4,13 +4,8 @@
     <test verbose="2" preserve-order="true"
           name="C:/Users/abdelrhman.amin/IdeaProjects/reqresIn/src/test/java/Testcases/UserTests.java">
         <classes>
-            <class name="Testcases.UserTests">
-                <methods>
-                    <include name="createUserWithValidData"/>
-                    <include name="updateUserWithValidData"/>
-                    <include name="deleteUser"/>
-                </methods>
-            </class>
+            <class name="Testcases.UserTests"></class>
+            <class name="Testcases.ResourcesTests"></class>
         </classes>
     </test>
 </suite>
