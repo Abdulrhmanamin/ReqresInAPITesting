@@ -1,34 +1,30 @@
 package Services;
 
-import SharedUtils.Properties;
+import configurations.Configuration;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import utils.RequestUtils;
+
 import static io.restassured.RestAssured.given;
 
 public class ResourceServices {
     public Response getAllResourcesInPageOne (){
-        return given()
-                .baseUri(Properties.base_Url)
-                .contentType(ContentType.JSON)
+        return RequestUtils.createRequestWithoutParamsOrBody()
                 .log().all()
                 .when()
-                .get(Properties.resourceEP);
+                .get(Configuration.getEndpoint("resourceEp"));
     }
     public Response getAllResourcesInPageTwo (){
-        return given()
-                .baseUri(Properties.base_Url)
-                .contentType(ContentType.JSON)
+        return RequestUtils.createRequestWithoutParamsOrBody()
                 .log().all()
                 .when()
-                .get(Properties.resourceEP+Properties.pageTwo);
+                .get(Configuration.getEndpoint("resourceEp")+ Configuration.getEndpoint("pageTwo"));
     }
 
     public Response getResourceById (int resourceId){
-        return given()
-                .baseUri(Properties.base_Url)
-                .contentType(ContentType.JSON)
+        return RequestUtils.createRequestWithoutParamsOrBody()
                 .log().all()
                 .when()
-                .get(Properties.resourceEP+"/"+resourceId);
+                .get(Configuration.getEndpoint("resourceEp")+"/"+resourceId);
     }
 }

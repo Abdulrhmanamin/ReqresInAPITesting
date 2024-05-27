@@ -1,7 +1,7 @@
 package Testcases;
 
 import Services.UserServices;
-import SharedUtils.UserUtils;
+import model.UserModel;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 public class UserTests {
     private final UserServices userServices = new UserServices();
-    UserUtils userUtils = new UserUtils();
+    UserModel userUtils = new UserModel();
 
 
 
@@ -22,7 +22,7 @@ public class UserTests {
     @Description("thus test for create user using valid data")
     @Severity(SeverityLevel.CRITICAL)
     public void createUserWithValidData(){
-        HashMap<String,String> bodyData = new HashMap<>();
+        HashMap<String,Object> bodyData = new HashMap<>();
         bodyData.put("name","abdo");
         bodyData.put("job","leader");
         Response response = userServices.createUserAPI(bodyData);
@@ -39,7 +39,7 @@ public class UserTests {
     @Description("this test for check if value updated or not")
     @Severity(SeverityLevel.CRITICAL)
     public void updateUserWithValidData(){
-        HashMap<String,String> bodyData = new HashMap<>();
+        HashMap<String,Object> bodyData = new HashMap<>();
         bodyData.put("name","abdooo");
         bodyData.put("job","lear");
         Response response = userServices.updateUserAPI(bodyData,userUtils.getUserID());

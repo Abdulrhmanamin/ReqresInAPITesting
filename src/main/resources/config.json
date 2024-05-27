@@ -1,0 +1,10 @@
+{
+  "baseUrl": "https://reqres.in/",
+  "endpoints": {
+    "loginEp": "api/login",
+    "registerEp": "api/register",
+    "userEp" : "api/users/",
+    "resourceEp" : "api/unknown/",
+    "pageTwo": "?page=2"
+  }
+}

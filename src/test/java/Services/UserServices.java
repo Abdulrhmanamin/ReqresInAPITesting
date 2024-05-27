@@ -1,9 +1,9 @@
 package Services;
 
-import SharedUtils.Properties;
-import SharedUtils.UserUtils;
+import configurations.Configuration;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import utils.RequestUtils;
 
 import java.util.HashMap;
 
@@ -13,39 +13,29 @@ public class UserServices {
 
 
 
-public Response RegesterApi(HashMap<String,String> bodyData){
-    return given()
-            .baseUri(Properties.base_Url)
-            .contentType(ContentType.JSON)
-            .body(bodyData)
+public Response RegesterApi(HashMap<String,Object> bodyData){
+    return RequestUtils.createRequestWithBody(bodyData)
             .log().all()
             .when()
-            .post(Properties.registerEP);
+            .post(Configuration.getEndpoint("registerEp"));
 
 }
-public Response createUserAPI (HashMap<String,String> bodyData){
-    return given()
-            .baseUri(Properties.base_Url)
-            .contentType(ContentType.JSON)
-            .body(bodyData)
+public Response createUserAPI (HashMap<String,Object> bodyData){
+    return RequestUtils.createRequestWithBody(bodyData)
             .log().all()
             .when()
-            .post(Properties.userEP);
+            .post(Configuration.getEndpoint("userEp"));
 }
-public Response updateUserAPI (HashMap<String,String> bodyData,int userId){
-    return given()
-            .baseUri(Properties.base_Url)
-            .contentType(ContentType.JSON)
-            .body(bodyData)
+public Response updateUserAPI (HashMap<String,Object> bodyData,int userId){
+    return RequestUtils.createRequestWithBody(bodyData)
             .log().all()
             .when()
-            .put(Properties.userEP+userId);
+            .put(Configuration.getEndpoint("userEp")+userId);
     }
 public Response deleteUserAPI (int userId){
-    return given()
-            .baseUri(Properties.base_Url)
+    return RequestUtils.createRequestWithoutParamsOrBody()
             .log().all()
             .when()
-            .delete(Properties.userEP+userId);
+            .delete(Configuration.getEndpoint("userEp")+userId);
 }
 }

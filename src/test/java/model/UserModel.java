@@ -1,6 +1,6 @@
-package SharedUtils;
+package model;
 
-public class UserUtils {
+public class UserModel {
    private int userID;
 
     public int getUserID() {

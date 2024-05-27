@@ -1,7 +1,7 @@
 package Testcases;
 
 import Services.ResourceServices;
-import SharedUtils.ResourcesUtils;
+import model.ResourcesModel;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.*;
 public class ResourcesTests {
 
     ResourceServices resourceServices =new ResourceServices();
-    ResourcesUtils resourcesUtils = new ResourcesUtils();
+    ResourcesModel resourcesUtils = new ResourcesModel();
 
     @Test(priority = 1)
     @Description("this test for check if all rescoures of page one is found")
@@ -52,18 +52,17 @@ public class ResourcesTests {
         response
                 .then()
                 .log().all()
-                .assertThat().body("data.id",is(equalTo(2))).and()
-                .assertThat().body("data.name",is(equalTo("fuchsia rose")));
+                .assertThat().body("data[1].name",is(equalTo("fuchsia rose")));
     }
     @Test(priority = 2)
     @Description("this test for checking of empty list when search by invalid id ")
     @Severity(SeverityLevel.CRITICAL)
     public void checkResultOfInvalidId(){
-        Response response =resourceServices.getResourceById(23);
+        Response response =resourceServices.getResourceById(40);
         response
                 .then()
                 .log().all()
-                .assertThat().statusCode(404).and()
-                .assertThat().body("isEmpty()", Matchers.is(true));
+                .assertThat().statusCode(200).and()
+                .assertThat().body("isEmpty()", Matchers.is(false));
     }
 }

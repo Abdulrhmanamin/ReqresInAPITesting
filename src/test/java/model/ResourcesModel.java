@@ -1,6 +1,6 @@
-package SharedUtils;
+package model;
 
-public class ResourcesUtils {
+public class ResourcesModel {
 
     private int resourceId;
 
